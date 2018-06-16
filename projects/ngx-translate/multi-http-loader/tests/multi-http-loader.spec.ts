@@ -2,7 +2,7 @@ import {HttpClient} from "@angular/common/http";
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
 import {TestBed} from "@angular/core/testing";
 import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
-import {TranslateHttpLoader} from "../src/public_api";
+import {MultiTranslateHttpLoader} from "../src/public_api";
 
 describe('TranslateLoader', () => {
   let translate: TranslateService;
@@ -15,7 +15,7 @@ describe('TranslateLoader', () => {
         TranslateModule.forRoot({
           loader: {
             provide: TranslateLoader,
-            useFactory: (httpClient: HttpClient) => new TranslateHttpLoader(httpClient),
+            useFactory: (httpClient: HttpClient) => new MultiTranslateHttpLoader(httpClient),
             deps: [HttpClient]
           }
         })
@@ -31,10 +31,10 @@ describe('TranslateLoader', () => {
     http = undefined;
   });
 
-  it('should be able to provide TranslateHttpLoader', () => {
-    expect(TranslateHttpLoader).toBeDefined();
+  it('should be able to provide MultiTranslateHttpLoader', () => {
+    expect(MultiTranslateHttpLoader).toBeDefined();
     expect(translate.currentLoader).toBeDefined();
-    expect(translate.currentLoader instanceof TranslateHttpLoader).toBeTruthy();
+    expect(translate.currentLoader instanceof MultiTranslateHttpLoader).toBeTruthy();
   });
 
   it('should be able to get translations', () => {

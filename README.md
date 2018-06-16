@@ -1,10 +1,10 @@
-# @ngx-translate/http-loader [![Build Status](https://travis-ci.org/ngx-translate/http-loader.svg?branch=master)](https://travis-ci.org/ngx-translate/http-loader) [![npm version](https://badge.fury.io/js/%40ngx-translate%2Fhttp-loader.svg)](https://badge.fury.io/js/%40ngx-translate%2Fhttp-loader)
+# @ngx-translate/multi-http-loader [![Build Status](https://travis-ci.org/ngx-translate/multi-http-loader.svg?branch=master)](https://travis-ci.org/ngx-translate/multi-http-loader) [![npm version](https://badge.fury.io/js/%40ngx-translate%2Fmulti-http-loader.svg)](https://badge.fury.io/js/%40ngx-translate%2Fmulti-http-loader)
 
 A loader for [ngx-translate](https://github.com/ngx-translate/core) that loads translations using http.
 
 Simple example using ngx-translate: https://stackblitz.com/github/ngx-translate/example
 
-Get the complete changelog here: https://github.com/ngx-translate/http-loader/releases
+Get the complete changelog here: https://github.com/ngx-translate/multi-http-loader/releases
 
 * [Installation](#installation)
 * [Usage](#usage)
@@ -13,15 +13,15 @@ Get the complete changelog here: https://github.com/ngx-translate/http-loader/re
 
 We assume that you already installed [ngx-translate](https://github.com/ngx-translate/core).
 
-Now you need to install the npm module for `TranslateHttpLoader`:
+Now you need to install the npm module for `MultiTranslateHttpLoader`:
 
 ```sh
-npm install @ngx-translate/http-loader --save
+npm install @ngx-translate/multi-http-loader --save
 ```
 
 Choose the version corresponding to your Angular version:
 
- Angular     | @ngx-translate/core | @ngx-translate/http-loader
+ Angular     | @ngx-translate/core | @ngx-translate/multi-http-loader
  ----------- | ------------------- | --------------------------
  6           | 10.x+               | 3.x+
  5           | 8.x to 9.x          | 1.x to 2.x
@@ -29,16 +29,16 @@ Choose the version corresponding to your Angular version:
  2 to 4.2.x  | 7.x or less         | 0.x
 
 ## Usage
-#### 1. Setup the `TranslateModule` to use the `TranslateHttpLoader`:
+#### 1. Setup the `TranslateModule` to use the `MultiTranslateHttpLoader`:
 
-The `TranslateHttpLoader` uses HttpClient to load translations, which means that you have to import the HttpClientModule from `@angular/common/http` before the `TranslateModule`:
+The `MultiTranslateHttpLoader` uses HttpClient to load translations, which means that you have to import the HttpClientModule from `@angular/common/http` before the `TranslateModule`:
 
 ```ts
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {TranslateHttpLoader} from '@ngx-translate/multi-http-loader';
 import {AppComponent} from "./app";
 
 // AoT requires an exported function for factories
@@ -63,7 +63,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 export class AppModule { }
 ```
 
-The `TranslateHttpLoader` also has two optional parameters:
+The `MultiTranslateHttpLoader` also has two optional parameters:
 - prefix: string = "/assets/i18n/"
 - suffix: string = ".json"
 

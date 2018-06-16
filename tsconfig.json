@@ -17,8 +17,8 @@
       "dom"
     ],
     "paths": {
-      "@ngx-translate/http-loader": [
-        "dist/@ngx-translate/http-loader"
+      "@ngx-translate/multi-http-loader": [
+        "dist/@ngx-translate/multi-http-loader"
       ]
     }
   }

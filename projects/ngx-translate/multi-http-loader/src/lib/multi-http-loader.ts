@@ -2,7 +2,7 @@ import {HttpClient} from "@angular/common/http";
 import {TranslateLoader} from "@ngx-translate/core";
 import {Observable} from 'rxjs';
 
-export class TranslateHttpLoader implements TranslateLoader {
+export class MultiTranslateHttpLoader implements TranslateLoader {
   constructor(private http: HttpClient, public prefix: string = "/assets/i18n/", public suffix: string = ".json") {}
 
   /**

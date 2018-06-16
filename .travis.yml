@@ -9,9 +9,9 @@ before_install:
   - if [[ `npm -v` != 6* ]]; then npm i -g npm@6; fi
 after_success:
   - npm run build
-  - cp .git dist/@ngx-translate/http-loader/ -r # required by semantic release
-  - cp README.md dist/@ngx-translate/http-loader/
-  - cd dist/@ngx-translate/http-loader/
+  - cp .git dist/@ngx-translate/multi-http-loader/ -r # required by semantic release
+  - cp README.md dist/@ngx-translate/multi-http-loader/
+  - cd dist/@ngx-translate/multi-http-loader/
   - npm install
   - npm run semantic-release
 branches:

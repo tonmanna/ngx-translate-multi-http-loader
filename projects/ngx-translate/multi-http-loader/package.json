@@ -1,7 +1,7 @@
 {
-  "name": "@ngx-translate/http-loader",
-  "description": "A loader for ngx-translate that loads translations using http",
-  "author": "Olivier Combe",
+  "name": "@ngx-translate/multi-http-loader",
+  "description": "A loader for ngx-translate that loads multiple translation files using http",
+  "author": "Dennis Keil",
   "keywords": [
     "angular",
     "angular 2",
@@ -10,13 +10,13 @@
     "ngx-translate"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/ngx-translate/http-loader",
+  "homepage": "https://github.com/denniske/ngx-translate-multi-http-loader",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ngx-translate/http-loader.git"
+    "url": "git+https://github.com/denniske/ngx-translate-multi-http-loader.git"
   },
   "bugs": {
-    "url": "https://github.com/ngx-translate/http-loader/issues"
+    "url": "https://github.com/denniske/ngx-translate-multi-http-loader/issues"
   },
   "peerDependencies": {
     "@ngx-translate/core": ">=10.0.0",

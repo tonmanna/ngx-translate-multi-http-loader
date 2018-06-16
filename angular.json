@@ -3,33 +3,33 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "@ngx-translate/http-loader": {
-      "root": "projects/ngx-translate/http-loader",
-      "sourceRoot": "projects/ngx-translate/http-loader/src",
+    "@ngx-translate/multi-http-loader": {
+      "root": "projects/ngx-translate/multi-http-loader",
+      "sourceRoot": "projects/ngx-translate/multi-http-loader/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/ngx-translate/http-loader/tsconfig.lib.json",
-            "project": "projects/ngx-translate/http-loader/ng-package.json"
+            "tsConfig": "projects/ngx-translate/multi-http-loader/tsconfig.lib.json",
+            "project": "projects/ngx-translate/multi-http-loader/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-translate/http-loader/test.ts",
-            "tsConfig": "projects/ngx-translate/http-loader/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-translate/http-loader/karma.conf.js"
+            "main": "projects/ngx-translate/multi-http-loader/test.ts",
+            "tsConfig": "projects/ngx-translate/multi-http-loader/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-translate/multi-http-loader/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ngx-translate/http-loader/tsconfig.lib.json",
-              "projects/ngx-translate/http-loader/tsconfig.spec.json"
+              "projects/ngx-translate/multi-http-loader/tsconfig.lib.json",
+              "projects/ngx-translate/multi-http-loader/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -39,5 +39,5 @@
       }
     }
   },
-  "defaultProject": "@ngx-translate/http-loader"
+  "defaultProject": "@ngx-translate/multi-http-loader"
 }

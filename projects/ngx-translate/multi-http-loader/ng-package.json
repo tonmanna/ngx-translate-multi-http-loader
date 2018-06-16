@@ -1,6 +1,6 @@
 {
   "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../../dist/@ngx-translate/http-loader",
+  "dest": "../../../dist/@ngx-translate/multi-http-loader",
   "deleteDestPath": false,
   "keepLifecycleScripts": true,
   "lib": {
