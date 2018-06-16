@@ -1,14 +1,24 @@
 import {HttpClient} from "@angular/common/http";
 import {TranslateLoader} from "@ngx-translate/core";
-import {Observable} from 'rxjs';
+import {Observable, forkJoin} from "rxjs";
+import {map} from "rxjs/operators";
+
+
+interface ITranslationResource {
+  prefix: string;
+  suffix: string;
+}
 
 export class MultiTranslateHttpLoader implements TranslateLoader {
-  constructor(private http: HttpClient, public prefix: string = "/assets/i18n/", public suffix: string = ".json") {}
+  constructor(
+    private http: HttpClient,
+    private resources: ITranslationResource[],
+  ) {}
 
-  /**
-   * Gets the translations from the server
-   */
-  public getTranslation(lang: string): Observable<Object> {
-    return this.http.get(`${this.prefix}${lang}${this.suffix}`);
+  public getTranslation(lang: string): Observable<any> {
+    const requests = this.resources.map(resource => {
+      return this.http.get(resource.prefix + lang + resource.suffix);
+    });
+    return forkJoin(requests).pipe(map(response => response.reduce((a, b) => Object.assign(a, b))));
   }
 }

@@ -4,7 +4,7 @@ import {TestBed} from "@angular/core/testing";
 import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
 import {MultiTranslateHttpLoader} from "../src/public_api";
 
-describe('TranslateLoader', () => {
+describe('MultiTranslateHttpLoader - Single Translation File', () => {
   let translate: TranslateService;
   let http: HttpTestingController;
 
@@ -15,7 +15,9 @@ describe('TranslateLoader', () => {
         TranslateModule.forRoot({
           loader: {
             provide: TranslateLoader,
-            useFactory: (httpClient: HttpClient) => new MultiTranslateHttpLoader(httpClient),
+            useFactory: (httpClient: HttpClient) => new MultiTranslateHttpLoader(httpClient, [
+              {prefix: "/assets/i18n/", suffix: ".json"},
+            ]),
             deps: [HttpClient]
           }
         })
@@ -102,5 +104,66 @@ describe('TranslateLoader', () => {
 
     // mock response after the xhr request, otherwise it will be undefined
     http.expectOne('/assets/i18n/en.json').flush({"TEST": "This is a test"});
+  });
+});
+
+describe('MultiTranslateHttpLoader - Multiple Translation Files', () => {
+  let translate: TranslateService;
+  let http: HttpTestingController;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: (httpClient: HttpClient) => new MultiTranslateHttpLoader(httpClient, [
+              {prefix: "/assets/i18n/core/", suffix: ".json"},
+              {prefix: "/assets/i18n/shared/", suffix: ".json"},
+            ]),
+            deps: [HttpClient]
+          }
+        })
+      ],
+      providers: [TranslateService]
+    });
+    translate = TestBed.get(TranslateService);
+    http = TestBed.get(HttpTestingController);
+  });
+
+  afterEach(() => {
+    translate = undefined;
+    http = undefined;
+  });
+
+  it('should be able to get translations from multiple files', () => {
+    translate.use('en');
+
+    // this will request the translation from the backend because we use a static files loader for TranslateService
+    translate.get('TEST').subscribe((res: string) => {
+      expect(res).toEqual('This is a test (core)');
+    });
+    translate.get('TEST-SHARED').subscribe((res: string) => {
+      expect(res).toEqual('This is a test (shared)');
+    });
+
+    // mock response after the xhr request, otherwise it will be undefined
+    http.expectOne('/assets/i18n/core/en.json').flush({
+      "TEST": "This is a test (core)",
+      "TEST2": "This is another test (core)"
+    });
+    http.expectOne('/assets/i18n/shared/en.json').flush({
+      "TEST-SHARED": "This is a test (shared)",
+      "TEST2-SHARED": "This is another test (shared)"
+    });
+
+    // this will request the translation from downloaded translations without making a request to the backend
+    translate.get('TEST2').subscribe((res: string) => {
+      expect(res).toEqual('This is another test (core)');
+    });
+    translate.get('TEST2-SHARED').subscribe((res: string) => {
+      expect(res).toEqual('This is another test (shared)');
+    });
   });
 });
