@@ -1,6 +1,6 @@
 {
-  "name": "@ngx-translate/multi-http-loader",
-  "description": "A loader for ngx-translate that loads translations using http",
+  "name": "ngx-translate-multi-http-loader",
+  "description": "A loader for ngx-translate that loads translations from multiple files using http",
   "scripts": {
     "build": "ng build",
     "commit": "git-cz",
