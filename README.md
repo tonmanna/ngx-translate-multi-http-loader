@@ -11,7 +11,6 @@ Get the complete changelog here: https://github.com/ngx-translate/multi-http-loa
 
 ## Installation
 
-
 We assume that you already installed [ngx-translate](https://github.com/ngx-translate/core).
 
 Now you need to install the npm module for `MultiTranslateHttpLoader`:
