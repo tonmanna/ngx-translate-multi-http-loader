@@ -4,7 +4,7 @@ import {Observable, forkJoin} from "rxjs";
 import {map} from "rxjs/operators";
 
 
-interface ITranslationResource {
+export interface ITranslationResource {
   prefix: string;
   suffix: string;
 }
