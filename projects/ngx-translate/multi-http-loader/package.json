@@ -1,6 +1,6 @@
 {
-  "name": "@ngx-translate/multi-http-loader",
-  "description": "A loader for ngx-translate that loads multiple translation files using http",
+  "name": "ngx-translate-multi-http-loader",
+  "description": "A loader for ngx-translate that loads translations from multiple files using http",
   "author": "Dennis Keil",
   "keywords": [
     "angular",
