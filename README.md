@@ -82,3 +82,5 @@ export function HttpLoaderFactory(http: HttpClient) {
 ```
 
 For now this loader only support the json format.
+
+The loader will merge all translation files from the server using [deepmerge](https://github.com/KyleAMathews/deepmerge).
