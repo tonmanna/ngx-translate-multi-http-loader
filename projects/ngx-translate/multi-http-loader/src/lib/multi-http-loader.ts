@@ -2,6 +2,7 @@ import {HttpClient} from "@angular/common/http";
 import {TranslateLoader} from "@ngx-translate/core";
 import {Observable, forkJoin} from "rxjs";
 import {map} from "rxjs/operators";
+import merge from 'deepmerge';
 
 
 export interface ITranslationResource {
@@ -19,6 +20,6 @@ export class MultiTranslateHttpLoader implements TranslateLoader {
     const requests = this.resources.map(resource => {
       return this.http.get(resource.prefix + lang + resource.suffix);
     });
-    return forkJoin(requests).pipe(map(response => response.reduce((a, b) => Object.assign(a, b))));
+    return forkJoin(requests).pipe(map(response => merge.all(response)));
   }
 }

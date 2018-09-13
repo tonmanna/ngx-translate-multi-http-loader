@@ -151,11 +151,17 @@ describe('MultiTranslateHttpLoader - Multiple Translation Files', () => {
     // mock response after the xhr request, otherwise it will be undefined
     http.expectOne('/assets/i18n/core/en.json').flush({
       "TEST": "This is a test (core)",
-      "TEST2": "This is another test (core)"
+      "TEST2": "This is another test (core)",
+      "DEEP": {
+        "some": "thing"
+      }
     });
     http.expectOne('/assets/i18n/shared/en.json').flush({
       "TEST-SHARED": "This is a test (shared)",
-      "TEST2-SHARED": "This is another test (shared)"
+      "TEST2-SHARED": "This is another test (shared)",
+      "DEEP": {
+        "another": "something"
+      }
     });
 
     // this will request the translation from downloaded translations without making a request to the backend
@@ -164,6 +170,12 @@ describe('MultiTranslateHttpLoader - Multiple Translation Files', () => {
     });
     translate.get('TEST2-SHARED').subscribe((res: string) => {
       expect(res).toEqual('This is another test (shared)');
+    });
+    translate.get('DEEP').subscribe((res: any) => {
+      expect(res).toEqual({
+        "some": "thing",
+        "another": "something"
+      });
     });
   });
 });
