@@ -10,7 +10,6 @@
     "test": "ng test",
     "test:watch": "ng test --watch"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "^6.0.0",
     "@angular/compiler": "^6.0.0",
