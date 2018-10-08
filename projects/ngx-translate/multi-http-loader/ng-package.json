@@ -5,5 +5,8 @@
   "keepLifecycleScripts": true,
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "deepmerge"
+  ]
 }
