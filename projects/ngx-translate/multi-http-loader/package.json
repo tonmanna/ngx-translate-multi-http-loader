@@ -19,7 +19,7 @@
     "url": "https://github.com/denniske/ngx-translate-multi-http-loader/issues"
   },
   "dependencies": {
-    "deepmerge": "^2.1.1"
+    "deepmerge": "2.1.1"
   },
   "peerDependencies": {
     "@ngx-translate/core": ">=10.0.0",

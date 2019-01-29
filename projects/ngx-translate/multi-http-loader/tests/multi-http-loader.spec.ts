@@ -140,15 +140,7 @@ describe('MultiTranslateHttpLoader - Multiple Translation Files', () => {
   it('should be able to get translations from multiple files', () => {
     translate.use('en');
 
-    // this will request the translation from the backend because we use a static files loader for TranslateService
-    translate.get('TEST').subscribe((res: string) => {
-      expect(res).toEqual('This is a test (core)');
-    });
-    translate.get('TEST-SHARED').subscribe((res: string) => {
-      expect(res).toEqual('This is a test (shared)');
-    });
-
-    // mock response after the xhr request, otherwise it will be undefined
+    // mock response, otherwise it will be undefined
     http.expectOne('/assets/i18n/core/en.json').flush({
       "TEST": "This is a test (core)",
       "TEST2": "This is another test (core)",
@@ -164,18 +156,30 @@ describe('MultiTranslateHttpLoader - Multiple Translation Files', () => {
       }
     });
 
-    // this will request the translation from downloaded translations without making a request to the backend
-    translate.get('TEST2').subscribe((res: string) => {
-      expect(res).toEqual('This is another test (core)');
+    expect(translate.instant('TEST2')).toEqual('This is another test (core)');
+    expect(translate.instant('TEST2-SHARED')).toEqual('This is another test (shared)');
+    expect(translate.instant('DEEP')).toEqual({
+      "some": "thing",
+      "another": "something"
     });
-    translate.get('TEST2-SHARED').subscribe((res: string) => {
-      expect(res).toEqual('This is another test (shared)');
+  });
+
+  it('should be able to get translations from multiple files even if some are missing', () => {
+    translate.use('en');
+
+    // mock response, otherwise it will be undefined
+    http.expectOne('/assets/i18n/core/en.json').flush({
+      "TEST": "This is a test (core)",
+      "TEST2": "This is another test (core)",
+      "DEEP": {
+        "some": "thing"
+      }
     });
-    translate.get('DEEP').subscribe((res: any) => {
-      expect(res).toEqual({
-        "some": "thing",
-        "another": "something"
-      });
-    });
+    http.expectOne('/assets/i18n/shared/en.json').error(new ErrorEvent('network error'));
+
+    expect(translate.instant('TEST')).toEqual('This is a test (core)');
+    expect(translate.instant('TEST2')).toEqual('This is another test (core)');
+    expect(translate.instant('TEST-SHARED')).toEqual('TEST-SHARED');
+    expect(translate.instant('TEST2-SHARED')).toEqual('TEST2-SHARED');
   });
 });
