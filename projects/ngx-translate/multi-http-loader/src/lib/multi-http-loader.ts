@@ -20,7 +20,8 @@ export class MultiTranslateHttpLoader implements TranslateLoader {
     const requests = this.resources.map(resource => {
       const path = resource.prefix + lang + resource.suffix;
       return this.http.get(path).pipe(catchError(res => {
-        console.error("Could not find translation file:", path);
+        console.error("Something went wrong for the following translation file:", path);
+        console.error(res.message);
         return of({});
       }));
     });
