@@ -4,7 +4,7 @@ npx nx serve demo --port 4301
 
 npx nx deploy ngx-translate-multi-http-loader
 
-
+git tag v7.0.0 && git push --tags
 
 https://nx.dev/l/a/tutorial/01-create-application
 
