@@ -22,7 +22,8 @@ npm install ngx-translate-multi-http-loader --save
 Choose the version corresponding to your Angular version:
 
  Angular     | @ngx-translate/core | ngx-translate-multi-http-loader
- ----------- | ------------------- | --------------------------
+ ----------- |---------------------| --------------------------
+ 13          | 14.x+               | 7.x+
  6           | 10.x+               | 1.x+
 
 ## Usage
