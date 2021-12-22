@@ -1,4 +1,4 @@
-# @ngx-translate/multi-http-loader [![Build Status](https://travis-ci.org/denniske/ngx-translate-multi-http-loader.svg?branch=master)](https://travis-ci.org/denniske/ngx-translate-multi-http-loader) [![npm version](https://badge.fury.io/js/ngx-translate-multi-http-loader.svg)](https://badge.fury.io/js/ngx-translate-multi-http-loader)
+# @ngx-translate/multi-http-loader [![npm version](https://badge.fury.io/js/ngx-translate-multi-http-loader.svg)](https://badge.fury.io/js/ngx-translate-multi-http-loader)
 
 A loader for [ngx-translate](https://github.com/ngx-translate/core) that loads translations using http.
 
