@@ -3,5 +3,6 @@
   "dest": "../../dist/libs/ngx-translate-multi-http-loader",
   "lib": {
     "entryFile": "src/index.ts"
-  }
+  },
+  "allowedNonPeerDependencies": ["."]
 }
