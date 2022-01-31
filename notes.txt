@@ -2,12 +2,13 @@
 npx nx serve example --port 4300
 npx nx serve demo --port 4301
 
-npx nx deploy ngx-translate-multi-http-loader
+npm login
+denniske.npm@gmail.com
 
-git tag v7.0.0 && git push --tags
+set version in libs/.../package.json
+
+npx nx deploy ngx-translate-multi-http-loader
 
 https://nx.dev/l/a/tutorial/01-create-application
 
-
-
-
+git tag v7.0.0 && git push --tags
