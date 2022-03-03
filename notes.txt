@@ -6,7 +6,6 @@ npm login
 denniske.npm@gmail.com
 
 set version in libs/.../package.json
-
 npx nx deploy ngx-translate-multi-http-loader
 
 https://nx.dev/l/a/tutorial/01-create-application
