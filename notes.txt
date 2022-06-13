@@ -2,8 +2,7 @@
 
 
 npm i
-npx tsc
-npm publish --access=public
+npx tsc && npm publish --access=public
 
 
 
