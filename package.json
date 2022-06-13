@@ -1,6 +1,7 @@
 {
   "name": "ngx-translate-multi-http-loader",
   "version": "8.0.0",
+  "license": "MIT",
   "maintainers": [
     "denniske.npm@gmail.com"
   ],
