@@ -20,8 +20,8 @@
   "devDependencies": {
     "typescript": ">=4.4.3"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/multi-http-loader.js",
+  "types": "dist/multi-http-loader.d.ts",
   "files": [
     "/dist"
   ]
