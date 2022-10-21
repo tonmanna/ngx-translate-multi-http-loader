@@ -1,4 +1,4 @@
-import {HttpClient} from "@angular/common/http";
+import {HttpBackend, HttpClient} from "@angular/common/http";
 import {TranslateLoader} from "@ngx-translate/core";
 import {Observable, forkJoin, of} from "rxjs";
 import {catchError, map} from "rxjs/operators";
