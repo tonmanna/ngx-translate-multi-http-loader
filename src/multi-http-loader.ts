@@ -13,14 +13,14 @@ export interface ITranslationResource {
 
 export class MultiTranslateHttpLoader implements TranslateLoader {
   constructor(
-    private http: HttpClient,
+    private handler: HttpBackend,
     private resources: ITranslationResource[],
   ) {}
 
   public getTranslation(lang: string): Observable<any> {
     const requests = this.resources.map(resource => {
       const path = resource.prefix + lang + resource.suffix;
-      return this.http.get(path).pipe(catchError(res => {
+      return new HttpClient(this._handler).get(path).pipe(catchError(res => {
         console.error("Something went wrong for the following translation file:", path);
         console.error(res.message);
         return of({});
