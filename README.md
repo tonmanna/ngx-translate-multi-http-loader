@@ -13,7 +13,8 @@ Get the complete changelog here: https://github.com/denniske/ngx-translate-multi
 * [Usage](#usage)
 
 ## breaking change: v9.0.0
-This library is now using `httpBackend` instead of the `httpClient`, to avoid being delayed by interceptor, which was creating errors while loading.
+* This library is now using `httpBackend` instead of the `httpClient`, to avoid being delayed by interceptor, which was creating errors while loading.
+* From the v9, the library will only be using a list of `string[]` so `prefix` & `suffix` aren't needed anymore and `.json` gonna be the default suffix.
 
 ## Installation
 
@@ -74,21 +75,5 @@ The `MultiTranslateHttpLoader` takes a list of strings.
 Those strings, for example `['/assets/i18n/core/', '/assets/i18n/vendors/']`,   
 will load your translations files for the lang "en" from : `/assets/i18n/core/en.json` and `/assets/i18n/vendors/en.json`
 
-### Custom suffix
-**For now this loader only support the `json` format.**
-
-Instead of an array of `string[]`,  
-you may pass a list of parameters:
-- `prefix: string = '/assets/i18n/'`
-- `suffix: string = '.json'`
-
-```typescript
-export function HttpLoaderFactory(_httpBackend: HttpBackend) {
-    return new MultiTranslateHttpLoader(_httpBackend, [
-        {prefix: './assets/i18n/core/', suffix: '.json'},
-        {prefix: './assets/i18n/vendors/'}, // , "suffix: '.json'" being the default value
-    ]);
-}
-```
 
 The loader will merge all translation files from the server using [deepmerge](https://github.com/KyleAMathews/deepmerge).
