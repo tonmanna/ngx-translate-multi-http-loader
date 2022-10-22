@@ -7,14 +7,13 @@
     "raphael.balet@outlook.com"
   ],
   "scripts": {
-    "publish": "ng build ngx-translate-multi-http-loader --configuration production && npm publish ./dist/ngx-translate-multi-http-loader && npm i ngx-translate-multi-http-loader@latest"
+    "publish": "ng build ngx-translate-multi-http-loader --configuration production && npm publish ./dist/ngx-translate-multi-http-loader"
   },
   "dependencies": {
     "@angular/common": "^14.2.7",
     "@angular/core": "^14.2.7",
     "@ngx-translate/core": "^14.0.0",
     "deepmerge": "^4.2.2",
-    "ngx-translate-multi-http-loader": "^9.0.0",
     "rxjs": "7.5.7",
     "tslib": "2.4.0"
   },
