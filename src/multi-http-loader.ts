@@ -1,31 +1,31 @@
-import {HttpClient} from "@angular/common/http";
-import {TranslateLoader} from "@ngx-translate/core";
-import {Observable, forkJoin, of} from "rxjs";
-import {catchError, map} from "rxjs/operators";
-// @ts-ignore
-import merge from 'deepmerge';
-
-
-export interface ITranslationResource {
-  prefix: string;
-  suffix: string;
-}
+import { HttpBackend, HttpClient } from "@angular/common/http";
+import { TranslateLoader } from "@ngx-translate/core";
+import * as merge from "deepmerge";
+import { forkJoin, Observable, of } from "rxjs";
+import { catchError, map } from "rxjs/operators";
 
 export class MultiTranslateHttpLoader implements TranslateLoader {
   constructor(
-    private http: HttpClient,
-    private resources: ITranslationResource[],
+    private _handler: HttpBackend,
+    private _resourcesPrefix: string[]
   ) {}
 
   public getTranslation(lang: string): Observable<any> {
-    const requests = this.resources.map(resource => {
-      const path = resource.prefix + lang + resource.suffix;
-      return this.http.get(path).pipe(catchError(res => {
-        console.error("Something went wrong for the following translation file:", path);
-        console.error(res.message);
-        return of({});
-      }));
+    const requests = this._resourcesPrefix.map((prefix) => {
+      const path = `${prefix}${lang}.json`;
+
+      return new HttpClient(this._handler).get(path).pipe(
+        catchError((res) => {
+          console.error(
+            "Something went wrong for the following translation file:",
+            path
+          );
+          console.error(res.message);
+          return of({});
+        })
+      );
     });
-    return forkJoin(requests).pipe(map(response => merge.all(response)));
+
+    return forkJoin(requests).pipe(map((response) => merge.all(response)));
   }
 }

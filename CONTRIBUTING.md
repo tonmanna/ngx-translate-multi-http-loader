@@ -1,14 +1,5 @@
-
-
-
 npm i
 npx tsc && npm publish --access=public
-
-
-
-
-
-
 
 npx nx serve example --port 4300
 npx nx serve demo --port 4301
