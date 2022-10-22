@@ -1,0 +1,32 @@
+{
+  "name": "ngx-translate-multi-http-loader",
+  "version": "9.0.0",
+  "license": "MIT",
+  "author": "Raphael Balet",
+  "maintainers": [
+    "raphael.balet@outlook.com"
+  ],
+  "keywords": [
+    "angular",
+    "i18n",
+    "transalte",
+    "ngx-translate"
+  ],
+  "homepage": "https://github.com/rbalet/ngx-translate-multi-http-loader#readme",
+  "bugs": {
+    "url": "https://github.com/rbalet/ngx-translate-multi-http-loader/issues"
+  },
+  "repository": {
+    "url": "https://github.com/rbalet/ngx-translate-multi-http-loader"
+  },
+  "dependencies": {
+    "tslib": "^2.4.0"
+  },
+  "peerDependencies": {
+    "@angular/common": ">=12.0.0",
+    "@angular/core": ">=12.0.0",
+    "@ngx-translate/core": ">=14.0.0",
+    "deepmerge": ">=4.2.2",
+    "rxjs": "7.5.7"
+  }
+}

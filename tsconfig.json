@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "noImplicitOverride": true,
+    "noUnusedParameters": true,
     "moduleResolution": "node",
-    "module": "esnext",
-    "target": "es2015",
-    "declaration": true,
-    "outDir": "./dist"
+    "module": "es2020",
+    "target": "es2020",
+    "declaration": false
   },
-  "include": [
-    "src/**/*"
-  ]
+  "angularCompilerOptions": {
+    "strictTemplates": true
+  }
 }
