@@ -1,24 +1,26 @@
 {
   "name": "ngx-translate-multi-http-loader",
-  "version": "8.0.1",
+  "version": "9.0.0",
   "license": "MIT",
   "maintainers": [
     "denniske.npm@gmail.com"
   ],
-  "peerDependencies": {
-    "@angular/common": "^14.0.0",
-    "@angular/core": "^14.0.0"
+  "scripts": {
+    "serve:example": "npx nx serve example --port 4300",
+    "serve:demo": "npx nx serve demo --port 4301"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@angular/common": ">=14.0.0",
     "@angular/core": ">=14.0.0",
     "@ngx-translate/core": ">=14.0.0",
     "deepmerge": ">=4.2.2",
-    "rxjs": ">=7.4.0",
-    "tslib": ">=2.0.0"
+    "rxjs": "7.5.7"
+  },
+  "dependencies": {
+    "tslib": "2.4.0"
   },
   "devDependencies": {
-    "typescript": ">=4.4.3"
+    "typescript": "4.8.4"
   },
   "main": "dist/multi-http-loader.js",
   "types": "dist/multi-http-loader.d.ts",
