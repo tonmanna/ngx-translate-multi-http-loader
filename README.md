@@ -70,10 +70,30 @@ export function HttpLoaderFactory(_httpBackend: HttpBackend) {
 export class AppModule { }
 ```
 
-The `MultiTranslateHttpLoader` takes a list of strings. 
+The `MultiTranslateHttpLoader` takes a list of `string[]` or `ITranslationResource[]`. 
 
-Those strings, for example `['/assets/i18n/core/', '/assets/i18n/vendors/']`,   
+### String[]
+For example `['/assets/i18n/core/', '/assets/i18n/vendors/']`,   
 will load your translations files for the lang "en" from : `/assets/i18n/core/en.json` and `/assets/i18n/vendors/en.json`
 
+### Custom suffix
+**For now this loader only support the `json` format.**
+
+Instead of an array of `string[]`,  
+you may pass a list of parameters:
+- `prefix: string = '/assets/i18n/'`
+- `suffix: string = '.json'`
+
+```typescript
+export function HttpLoaderFactory(_httpBackend: HttpBackend) {
+    return new MultiTranslateHttpLoader(_httpBackend, [
+        {prefix: './assets/i18n/core/', suffix: '.json'},
+        {prefix: './assets/i18n/vendors/'}, // , "suffix: '.json'" being the default value
+    ]);
+}
+```
 
 The loader will merge all translation files from the server using [deepmerge](https://github.com/KyleAMathews/deepmerge).
+
+## Authors and acknowledgment
+* Former maintainer [Dennis Keil](https://github.com/denniske) 
