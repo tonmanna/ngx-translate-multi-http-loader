@@ -3,11 +3,11 @@
 
 A loader for [ngx-translate](https://github.com/ngx-translate/core) that loads translations using http.
 
-Angular 13 example: https://github.com/denniske/ngx-translate-multi-http-loader-demo
+Angular 14 example: https://stackblitz.com/edit/ngx-translate-multi-http-loader-sample-2clau3?file=src/app/app.module.ts
 
 Angular 6 example: https://stackblitz.com/edit/ngx-translate-multi-http-loader-sample
 
-Get the complete changelog here: https://github.com/denniske/ngx-translate-multi-http-loader/releases
+Get the complete changelog here: https://github.com/rbalet/ngx-translate-multi-http-loader/releases
 
 * [Installation](#installation)
 * [Usage](#usage)
