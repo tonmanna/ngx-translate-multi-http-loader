@@ -1,4 +1,4 @@
-# @ngx-translate/multi-http-loader [![npm version](https://badge.fury.io/js/ngx-translate-multi-http-loader.svg)](https://badge.fury.io/js/ngx-translate-multi-http-loader)
+# @ngx-translate/multi-http-loader [![npm version](https://img.shields.io/npm/v/ngx-translate-multi-http-loader.svg)](https://www.npmjs.com/package/ngx-translate-multi-http-loader)
 
 
 A loader for [ngx-translate](https://github.com/ngx-translate/core) that loads translations using http.
@@ -93,7 +93,8 @@ export function HttpLoaderFactory(_httpBackend: HttpBackend) {
 }
 ```
 
-The loader will merge all translation files from the server using [deepmerge](https://github.com/KyleAMathews/deepmerge).
+The loader will merge all translation files from the server using [deepmerge-ts](https://www.npmjs.com/package/deepmerge-ts).
 
 ## Authors and acknowledgment
+* maintainer [Raphaël Balet](https://github.com/rbalet) 
 * Former maintainer [Dennis Keil](https://github.com/denniske) 

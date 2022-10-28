@@ -1,6 +1,6 @@
 import { HttpBackend, HttpClient } from '@angular/common/http'
 import { TranslateLoader } from '@ngx-translate/core'
-import * as merge from 'deepmerge'
+import { deepmerge } from 'deepmerge-ts'
 import { forkJoin, Observable, of } from 'rxjs'
 import { catchError, map } from 'rxjs/operators'
 
@@ -16,12 +16,10 @@ export class MultiTranslateHttpLoader implements TranslateLoader {
   ) {}
 
   public getTranslation(lang: string): Observable<any> {
-    const requests = this._resourcesPrefix.map((resource) => {
+    const requests: Observable<Object | {}>[] = this._resourcesPrefix.map((resource) => {
       let path: string
       if (resource.prefix) path = `${resource.prefix}${lang}${resource.suffix || '.json'}`
-      else {
-        path = `${resource}${lang}.json`
-      }
+      else path = `${resource}${lang}.json`
 
       return new HttpClient(this._handler).get(path).pipe(
         catchError((res) => {
@@ -32,6 +30,17 @@ export class MultiTranslateHttpLoader implements TranslateLoader {
       )
     })
 
-    return forkJoin(requests).pipe(map((response) => merge.all(response)))
+    return forkJoin(requests).pipe(map((response) => this._deepmergeAll(response)))
+  }
+
+  // @TODO : wait from https://github.com/RebeccaStevens/deepmerge-ts/issues/255 to be merged
+  private _deepmergeAll(array) {
+    if (!Array.isArray(array)) {
+      return {}
+    }
+
+    return array.reduce((prev, next) => {
+      return deepmerge(prev, next)
+    }, {})
   }
 }
