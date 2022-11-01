@@ -30,17 +30,6 @@ export class MultiTranslateHttpLoader implements TranslateLoader {
       )
     })
 
-    return forkJoin(requests).pipe(map((response) => this._deepmergeAll(response)))
-  }
-
-  // @TODO : wait from https://github.com/RebeccaStevens/deepmerge-ts/issues/255 to be merged
-  private _deepmergeAll(array) {
-    if (!Array.isArray(array)) {
-      return {}
-    }
-
-    return array.reduce((prev, next) => {
-      return deepmerge(prev, next)
-    }, {})
+    return forkJoin(requests).pipe(map((response) => deepmerge(...response)))
   }
 }
