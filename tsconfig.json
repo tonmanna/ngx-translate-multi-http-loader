@@ -6,8 +6,9 @@
     "noUnusedParameters": true,
     "moduleResolution": "node",
     "module": "es2020",
-    "target": "es2020",
-    "declaration": false
+    "target": "ES2022",
+    "declaration": false,
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "strictTemplates": true
