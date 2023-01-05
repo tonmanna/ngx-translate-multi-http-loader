@@ -83,12 +83,14 @@ Instead of an array of `string[]`,
 you may pass a list of parameters:
 - `prefix: string = '/assets/i18n/'`
 - `suffix: string = '.json'`
+- `optional: boolean = true`
 
 ```typescript
 export function HttpLoaderFactory(_httpBackend: HttpBackend) {
     return new MultiTranslateHttpLoader(_httpBackend, [
         {prefix: './assets/i18n/core/', suffix: '.json'},
         {prefix: './assets/i18n/vendors/'}, // , "suffix: '.json'" being the default value
+        {prefix: './assets/i18n/non-existent/', optional: true}, // Wont create any log
     ]);
 }
 ```

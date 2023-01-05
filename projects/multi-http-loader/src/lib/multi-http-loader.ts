@@ -7,6 +7,7 @@ import { catchError, map } from 'rxjs/operators'
 export interface ITranslationResource {
   prefix: string
   suffix?: string
+  optional?: boolean
 }
 
 export class MultiTranslateHttpLoader implements TranslateLoader {
@@ -23,8 +24,12 @@ export class MultiTranslateHttpLoader implements TranslateLoader {
 
       return new HttpClient(this._handler).get(path).pipe(
         catchError((res) => {
-          console.error('Something went wrong for the following translation file:', path)
-          console.error(res.message)
+          if (!resource.optional) {
+            console.group()
+            console.error('Something went wrong for the following translation file:', path)
+            console.error(res.message)
+            console.groupEnd()
+          }
           return of({})
         }),
       )
