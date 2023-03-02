@@ -27,7 +27,7 @@ export class MultiTranslateHttpLoader implements TranslateLoader {
           if (!resource.optional) {
             console.group()
             console.error('Something went wrong for the following translation file:', path)
-            console.error(res.message)
+            console.error(res)
             console.groupEnd()
           }
           return of({})
