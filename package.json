@@ -1,10 +1,10 @@
 {
-  "name": "ngx-translate-multi-http-loader",
-  "version": "15.0.0",
+  "name": "itopplus-ngx-translate-multi-http-loader",
+  "version": "16.0.0",
   "license": "MIT",
-  "author": "Raphael Balet",
+  "author": "Worawut",
   "maintainers": [
-    "raphael.balet@outlook.com"
+    "tonmanna@gmail.com"
   ],
   "scripts": {
     "publish": "ng build ngx-translate-multi-http-loader --configuration production && npm publish ./dist/ngx-translate-multi-http-loader"
